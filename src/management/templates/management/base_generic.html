@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Project Management Tool{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'management/css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="{% url 'home' %}">Project Management Tool</a>
+            </div>
+            <div class="navbar-end">
+                {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="navbar-item">Logout</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <div class="content container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!-- management/templates/management/delete_task.html -->
+
+{% extends "management/base_generic.html" %}
+
+{% block title %}Delete Task{% endblock %}
+
+{% block content %}
+<h1>Are you sure you want to delete the task "{{ task.name }}"?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+    <a href="{% url 'project_detail' task.project.id %}">Cancel</a>
+</form>
+{% endblock %}

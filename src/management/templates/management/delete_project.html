@@ -1,0 +1,14 @@
+<!-- management/templates/management/delete_project.html -->
+
+{% extends "management/base_generic.html" %}
+
+{% block title %}Delete Project{% endblock %}
+
+{% block content %}
+<h1>Are you sure you want to delete the project "{{ project.name }}"?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+    <a href="{% url 'project_list' %}">Cancel</a>
+</form>
+{% endblock %}
