@@ -1,0 +1,16 @@
+{% extends "management/base_generic.html" %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+<h1>Projects</h1>
+<ul class="project-list">
+    {% for project in projects %}
+    <li>
+        <a href="{% url 'project_detail' project.id %}">{{ project.name }}</a>
+        <span class="project-manager">(Manager: {{ project.owner.username }})</span>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'create_project' %}" class="new-project-link">Create a Project</a>
+{% endblock %}

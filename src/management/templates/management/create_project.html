@@ -1,0 +1,19 @@
+{% extends "management/base_generic.html" %}
+
+{% block title %}Create a New Project{% endblock %}
+
+{% block content %}
+<h1>New project</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_name">Name:</label>
+        {{ form.name }}
+    </div>
+    <div class="form-group">
+        <label for="id_description">Description:</label>
+        {{ form.description }}
+    </div>
+    <button type="submit" class="btn">Create</button>
+</form>
+{% endblock %}
